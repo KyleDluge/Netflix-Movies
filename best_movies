@@ -1,0 +1,15 @@
+import csv
+outfile = open("best_movies.csv", "w")
+outfile_header = "Title, Country, Year\n"
+outfile.write(outfile_header)
+with open("netflix_titles.csv", "r") as file:
+    reader = csv.reader(file, delimiter=",")
+    header = next(reader)
+    for row in reader :
+        title = row[2]
+        country = row[5]
+        year = row[7]
+        line = "{},{},{}\n".format(title, year, country)
+        outfile.write(line)
+outfile.close()
+        
